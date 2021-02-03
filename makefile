@@ -3,7 +3,7 @@ CC = gcc
 
 # options
 CFLAGS = -Wall -Wextra -g
-# -Wdeclaration-after-statement -Werror=vla `sdl-config --cflags`
+# -Wdeclaration-after-statement -Werror=vla
 # LDFLAGS = -lm
 
 # liste des fichiers objets
@@ -18,15 +18,6 @@ main.o: main.c matrice.c matrice.h
 
 matrice.o: matrice.h matrice.c
 	$(CC) -c matrice.c $(CFLAGS)
-
-# hall_of_fame.o: hall_of_fame.h hall_of_fame.c
-# 	$(CC) -c hall_of_fame.c $(CFLAGS)
-
-# teZZt.o: teZZt.h teZZt.c
-# 	$(CC) -c teZZt.c $(CFLAGS)
-
-# hall_of_tests.o: hall_of_tests.c teZZt.h hall_of_fame.h
-# 	$(CC) -c hall_of_tests.c $(CFLAGS)
 
 clean:
 	rm -f $(OBJETS)
