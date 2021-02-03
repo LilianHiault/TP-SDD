@@ -7,14 +7,17 @@ CFLAGS = -Wall -Wextra -g
 # LDFLAGS = -lm
 
 # liste des fichiers objets
-SRC = main.c
+SRC = main.c matrice.c
 OBJETS = $(SRC:%.c=%.o)
 
 prog : $(OBJETS)
 	$(CC) $(OBJETS) $(LDFLAGS) -o prog
 
-main.o: main.c
+main.o: main.c matrice.c matrice.h
 	$(CC) -c main.c $(CFLAGS)
+
+matrice.o: matrice.h matrice.c
+	$(CC) -c matrice.c $(CFLAGS)
 
 # hall_of_fame.o: hall_of_fame.h hall_of_fame.c
 # 	$(CC) -c hall_of_fame.c $(CFLAGS)
