@@ -15,6 +15,7 @@ int main(int argc, char * argv[])
 	{
 	  mat = initMatrice(fichier, &m, &n);
 	  afficherMatrice(mat, m, n);
+	  libereMatrice(mat, m);
 	}
       else
 	{

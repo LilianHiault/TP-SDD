@@ -72,3 +72,16 @@ void afficherMatrice(int ** mat, int m, int n)
       printf("\n");
     }
 }
+
+void libereMatrice(int ** mat, int m)
+/* libereMatrice : libère la matrice
+   Entrée : mat la matrice à libérer
+            m lignes */
+{
+  int i = 0;
+  for(i=0; i<m; i++)
+    {
+      free(mat[i]);
+    }
+  free(mat);
+}

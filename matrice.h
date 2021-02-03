@@ -18,4 +18,9 @@ void afficherMatrice(int **, int, int);
             m lignes
 	    n colonnes */
 
+void libereMatrice(int ** , int);
+/* libereMatrice : libère la matrice
+   Entrée : mat la matrice à libérer
+            m lignes */
+
 #endif
