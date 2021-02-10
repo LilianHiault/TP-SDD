@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -g
 # LDFLAGS = -lm
 
 # liste des fichiers objets
-SRC = main.c matrice.c liste.c
+SRC = main.c matrice.c liste.c fonction.c
 OBJETS = $(SRC:%.c=%.o)
 
 prog : $(OBJETS)
@@ -21,6 +21,9 @@ matrice.o: matrice.h matrice.c
 
 liste.o : liste.h liste.c
 	$(CC) -c liste.c $(CFLAGS)
+
+fonction.o : fonction.h fonction.c
+	$(CC) -c fonction.c $(CFLAGS)
 
 clean:
 	rm -f $(OBJETS)
