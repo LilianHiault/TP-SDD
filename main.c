@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "matrice.h"
-#include <stdio.h>
+#include "liste.h"
 
 
 cellule_t * coutFaibles(int k, int ** C, int m, int n)
@@ -15,30 +15,47 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
    adresse vers la première cellule */
 {
   cellule_t * liste = NULL;
-  int i, j;
+  int i = 0;
+  int j = 0;
+  int val = 0;
+  int erreur = 0;
+  int compt = 0;
   // On rempli d'abord la liste de K valeurs
   // La liste est triée dans l'ordre décroissant, on a donc la plus grande valeur dans le 1er maillon
-  for(i=0; i<m; i++)
+  while(i < m && compt < k)
     {
-      for(j=0; j<n; j++)
+      while(j < n && compt < k)
 	{
-	  cellule_t c = creerCell(C[i][j], i, j);
-	  insererCell(*liste, &c);
+	  cellule_t * c = creerCell(C[i][j], i, j);
+	  if(c)
+	    {
+	      insererCell(&liste, c);
+	    }
+	  j++;
+	  compt++;
 	}
+      i++;
     }
 
   // On parcours chaque case de la matrice
-  for(i; i<m; i++)
+  for(i=i; i<m; i++)
     {
-      for(j; j<n; j++)
+      for(j=j; j<n; j++)
 	{
 	  // Si la valeur est plus petite que la valeur du 1er maillon (plus grande valeur de la liste)
-	  if(C[i][j] < valeurTete(liste))
+	  val = valeurTete(liste, &erreur);
+	  if(!erreur)
 	    {
-	      // Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
-	      supprTete(liste);
-	      cellule_t c = creerCell(C[i][j], i, j);
-	      insererCell(*liste, &c);
+	    if(C[i][j] < val)
+	      {
+		// Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
+		supprTete(&liste);
+		cellule_t * c = creerCell(C[i][j], i, j);
+		if(c)
+		  {
+		    insererCell(&liste, c);
+		  }
+	      }
 	    }
 	}
     }
