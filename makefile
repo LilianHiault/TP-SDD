@@ -13,10 +13,10 @@ OBJETS = $(SRC:%.c=%.o)
 prog : $(OBJETS)
 	$(CC) $(OBJETS) $(LDFLAGS) -o prog
 
-main.o: main.c matrice.c matrice.h liste.h liste.c
+main.o: main.c matrice.c matrice.h liste.h liste.c fonction.h fonction.c
 	$(CC) -c main.c $(CFLAGS)
 
-matrice.o: matrice.h matrice.c
+matrice.o: matrice.h matrice.c fonction.h fonction.c
 	$(CC) -c matrice.c $(CFLAGS)
 
 liste.o : liste.h liste.c

@@ -1,6 +1,8 @@
-#include "matrice.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "matrice.h"
+#include "fonction.h"
+
 
 int ** initMatrice(FILE * fichier, int * m, int * n)
 /* initMatrice : initialise la matrice à partir d'un fichier

@@ -1,68 +1,63 @@
-#include <stdlib.h>
 #include "liste.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-#define ERREUR -1
-
-cellule_t * creerCell(int val, int i, int j) {
-  /* creerCell : créer la cellule qui va contenir la valeur val, i et j
-     Entrée : val la valeur du cout
-     i ligne
-     j colonne
-     Sortie : cell la cellule créée */
-  cellule_t  * cell = malloc(sizeof(cellule_t));
-  if(cell)
+void afficherListe(cellule_t * adr)
+/* afficherListe : affiche la liste
+   Entrée : cellule_t* adresse de la première cellule
+   Sortie : */
+  
+{
+  cellule_t * cour = adr;
+  while(cour != NULL)
     {
-      cell->val = val;
-      cell->i = i;
-      cell->j = j;
-      cell->suiv = NULL;
-    }
-  return cell;
-}
-
-int valeurTete(cellule_t * tete, int * erreur) {
-  /* valeurTete : retourne la valeur de la tete
-     Entrée : tete la cellule a la tete de la liste
-     erreur un booléen qui indique si tout s'est bien passé
-     Sortie : val la valeur de la tete
-     erreur */
-  int val;
-  if (tete != NULL) {
-    val = tete->val;
-    *erreur = 0;
-  }    
-  else {
-    val = ERREUR;
-    *erreur = 1;
-  }
-  return val; 
-}
-
-void supprTete(cellule_t ** p_tete) {
-  /* supprTete : supprime la tete de la liste
-     Entrée : tete la cellule a la tete de la liste
-     Sortie : tete */
-  if (*p_tete != NULL)
-    *p_tete = *(p_tete)->suiv;
-}
-
-void insererCell(cellule_t ** p_tete, cellule_t * cell) {
-  /* insererCell : insérer la cellule dans la liste triée
-     Entrée : tete la cellule a la tete de la liste
-     cell la cellule a insérer
-     Sortie : tete */
-  int val = cell->val;
-  if (*p_tete == NULL) {
-    *p_tete = cell;
-  }
-  else {
-    cellule_t * cour = *p_tete;
-    cellule_t * prec = p_tete;
-    while (cour!=NULL && cour->val>val) {
-      prec = &(cour->suiv);
+      printf("%d, %d produit %d\n", cour->i, cour->j, cour->val);
       cour = cour->suiv;
     }
-    prec->suiv = cell;
-    cell->suiv = cour;
-  }
 }
+
+cellule_t ** rechercheTri(cellule_t ** a0, int v)
+/* rechercheTri : cherche v dans une liste triée
+   Entrée : cellule_t* a0 adresse de la première cellule
+            int v la valeur à chercher
+   Sortie : cellule_t prec l'adresse du précédent pointant vers la première occurence de v*/
+{
+  cellule_t ** prec = a0;
+  cellule_t * cour = *a0;
+  while(cour != NULL && cour->val < v)
+    {
+      prec = &cour->suiv;
+      cour = cour->suiv;
+    }
+  return prec;
+}
+
+cellule_t * nouvCellule(int v, int i, int j)
+/* nouvCellule : crée une nouvelle cellule
+   Entrée : int v la valeur
+            int i l'usine
+	    int j la période
+   Sortie : cellule_t* l'adresse de la cellule crée*/
+{
+  cellule_t * nouv;
+  nouv = malloc(sizeof(cellule_t));
+  if(nouv != NULL)
+    {
+      nouv->val = val;
+      nouv->i = i;
+      nouv->j = j;
+      nouv->suiv = NULL;
+    }
+  return nouv;
+}
+
+void adjCellule(cellule_t ** prec, cellule_t * nouv)
+/* adjCellule : insère une cellule dans la liste
+   Entrée : cellule_t** prec la cellule après laquelle il faut insérer
+            cellule_t* nouv la cellule à insérer
+   Sortie : */
+{
+  nouv->suiv = *prec;
+  *prec = nouv;
+}
+      
