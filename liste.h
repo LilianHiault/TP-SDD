@@ -34,7 +34,7 @@ void adjCellule(cellule_t ** prec, cellule_t * nouv);
             cellule_t* nouv la cellule à insérer
    Sortie : */
 
-void supprCellule(cellule_t * prec, cellule_t * cell);
+void supprCellule(cellule_t * prec);
 /* supprCellule : supprime une cellule dans une liste
    Entrée : prec la cellule précédante
             cell la cellule a suprimer

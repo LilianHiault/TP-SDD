@@ -24,10 +24,10 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
     {
       while(j < n && compt < k)
 	{
-	  cellule_t * c = creerCell(C[i][j], i, j);
+	  cellule_t * c = nouvCellule(C[i][j], i, j);
 	  if(c)
 	    {
-	      insererCell(&liste, c);
+	      adjCellule(&liste, c);
 	    }
 	  j++;
 	  compt++;
@@ -47,11 +47,11 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	      if(C[i][j] < val)
 		{
 		  // Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
-		  supprCellule(&liste);
-		  cellule_t * c = creerCell(C[i][j], i, j);
+		  supprCellule(liste);
+		  cellule_t * c = nouvCellule(C[i][j], i, j);
 		  if(c)
 		    {
-		      insererCell(&liste, c);
+		      adjCellule(&liste, c);
 		    }
 		}
 	    }

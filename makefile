@@ -22,7 +22,7 @@ matrice.o: matrice.h matrice.c fonction.h fonction.c
 liste.o : liste.h liste.c
 	$(CC) -c liste.c $(CFLAGS)
 
-fonction.o : fonction.h fonction.c
+fonction.o : fonction.h fonction.c liste.h liste.c
 	$(CC) -c fonction.c $(CFLAGS)
 
 clean:

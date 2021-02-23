@@ -11,7 +11,7 @@ void afficherListe(cellule_t * adr)
   cellule_t * cour = adr;
   while(cour != NULL)
     {
-      printf("%d, %d produit %d\n", cour->i, cour->j, cour->val);
+      printf("%d, %d produit %d\n", cour->usine, cour->periode, cour->val);
       cour = cour->suiv;
     }
 }
@@ -43,7 +43,7 @@ cellule_t * nouvCellule(int v, int i, int j)
   nouv = malloc(sizeof(cellule_t));
   if(nouv != NULL)
     {
-      nouv->val = val;
+      nouv->val = v;
       nouv->usine = i;
       nouv->periode = j;
       nouv->suiv = NULL;
@@ -66,7 +66,9 @@ void supprCellule(cellule_t * prec)
    Entrée : prec la cellule précédante de celle a supprimer
    Sortie : */
 {
+  cellule_t * sauv = prec->suiv;
   prec->suiv = prec->suiv->suiv;
+  free(sauv);
 }  
 
 int valeur(cellule_t * cell)

@@ -1,6 +1,8 @@
 #ifndef fonction_h
 #define fonction_h
 
+#include "liste.h"
+
 cellule_t * coutFaibles(int, int **, int, int);
 /* coutFaibles : crée la liste des K plus petites valeurs de la matrice C
    Entrée : k valeurs à mettre dans la liste
