@@ -44,8 +44,8 @@ cellule_t * nouvCellule(int v, int i, int j)
   if(nouv != NULL)
     {
       nouv->val = val;
-      nouv->i = i;
-      nouv->j = j;
+      nouv->usine = i;
+      nouv->periode = j;
       nouv->suiv = NULL;
     }
   return nouv;
@@ -61,3 +61,26 @@ void adjCellule(cellule_t ** prec, cellule_t * nouv)
   *prec = nouv;
 }
       
+void supprCellule(cellule_t * prec)
+/* supprCellule : supprime une cellule dans une liste
+   Entrée : prec la cellule précédante de celle a supprimer
+   Sortie : */
+{
+  prec->suiv = prec->suiv->suiv;
+}  
+
+int valeur(cellule_t * cell)
+/* valeur : retourne la valeur de la cellule
+   Entrée : cell la cellule
+   Sortie : la valeur */
+{
+  return cell->val;
+}
+
+int usine(cellule_t * cell)
+/* usine : retourne l'usine de la cellule
+   Entrée : cell la cellule
+   Sortie : l'usine */
+{
+  return cell->usine;
+}  
