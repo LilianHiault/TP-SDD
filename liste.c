@@ -6,7 +6,6 @@ void afficherListe(cellule_t * adr)
 /* afficherListe : affiche la liste
    Entrée : cellule_t* adresse de la première cellule
    Sortie : */
-  
 {
   cellule_t * cour = adr;
   while(cour != NULL)

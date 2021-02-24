@@ -57,7 +57,6 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	    }
 	}
     }
-  libereMatrice(C, m);
   return liste;
 }
 

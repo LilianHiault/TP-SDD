@@ -16,8 +16,21 @@ int main(int argc, char * argv[])
       if (fichier)
 	{
 	  mat = initMatrice(fichier, &m, &n);
+	  printf("Matrice : \n");
 	  afficherMatrice(mat, m, n);
+	  cellule_t * liste = coutFaibles(6, mat, m, n);
+	  printf("Liste :\n");
+	  afficherListe(liste);
+	  
 	  libereMatrice(mat, m);
+	  suppUsine(&liste, 2);
+	  suppUsine(&liste, 2);
+	  printf("Liste :\n");
+	  afficherListe(liste);
+
+	  printf("Fichier :\n");
+	  listToFile(stdout, liste);
+	  libereListe(liste);
 	}
       else
 	{
