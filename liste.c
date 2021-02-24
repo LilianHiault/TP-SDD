@@ -25,7 +25,7 @@ cellule_t ** rechercheTri(cellule_t ** a0, int v)
   cellule_t * cour = *a0;
   while(cour != NULL && cour->val < v)
     {
-      prec = &cour->suiv;
+      prec = &(cour->suiv);
       cour = cour->suiv;
     }
   return prec;
@@ -66,7 +66,7 @@ void supprCellule(cellule_t * prec)
    Sortie : */
 {
   cellule_t * sauv = prec->suiv;
-  prec->suiv = prec->suiv->suiv;
+  prec = prec->suiv;
   free(sauv);
 }  
 

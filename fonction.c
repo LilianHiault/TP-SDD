@@ -30,9 +30,13 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	      if(liste != NULL)
 		{
 		  val = valeur(liste);
+		  prec = rechercheTri(&liste, val);
+		  adjCellule(prec, c);
 		}
-	      prec = rechercheTri(&liste, val);
-	      adjCellule(prec, c);
+	      else
+		{
+		  adjCellule(&liste, c);
+		}
 	    }
 	  j++;
 	  compt++;
@@ -74,7 +78,7 @@ void suppUsine(cellule_t ** a0, int u)
   cellule_t * cour = *a0;
   while(cour != NULL)
     {
-      while(cour->usine == u)
+      while(cour != NULL && cour->usine == u)
 	{
 	  supprCellule(*prec);
 	}
