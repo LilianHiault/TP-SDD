@@ -50,4 +50,7 @@ int usine(cellule_t * cell);
    Entrée : cell la cellule
    Sortie : l'usine */
 
+void libereListe(cellule_t * a0);
+/* libereListe : libère la liste
+   Entrée : cellule_t * a0 l'adresse du premier élément de la liste */
 #endif

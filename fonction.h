@@ -18,5 +18,9 @@ void listToFile(FILE * fichier, cellule_t * liste);
             liste la liste que l'on souhaite écrire
    Sortie : */
 
-
+void suppUsine(cellule_t ** a0, int u);
+/* suppUsine : supprime toutes les occurences d'une usine dans une liste
+   Entrée : cellule_t * a0 l'adresse de la première cellule
+            int u l'usine à supprimer
+   Sortie : */
 #endif
