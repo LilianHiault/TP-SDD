@@ -86,3 +86,17 @@ int usine(cellule_t * cell)
 {
   return cell->usine;
 }  
+
+void libereListe(cellule_t * a0)
+/* libereListe : libère la liste
+   Entrée : cellule_t * a0 l'adresse du premier élément de la liste */
+{
+  cellule_t * cour = a0;
+  cellule_t * suivant = NULL;
+  while(cour != NULL)
+    {
+      suivant = cour->suiv;
+      free(cour);
+      cour = suivant;
+    }
+}

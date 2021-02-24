@@ -61,3 +61,21 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
   return liste;
 }
 
+void suppUsine(cellule_t ** a0, int u)
+/* suppUsine : supprime toutes les occurences d'une usine dans une liste
+   Entrée : cellule_t * a0 l'adresse de la première cellule
+            int u l'usine à supprimer
+   Sortie : */
+{
+  cellule_t ** prec = a0;
+  cellule_t * cour = *a0;
+  while(cour != NULL)
+    {
+      while(cour->usine == u)
+	{
+	  supprCellule(*prec);
+	}
+      prec = &cour->suiv;
+      cour = cour->suiv;
+    }
+}
