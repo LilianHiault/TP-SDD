@@ -79,3 +79,18 @@ void suppUsine(cellule_t ** a0, int u)
       cour = cour->suiv;
     }
 }
+
+void listToFile(FILE * fichier, cellule_t * liste)
+/* listToFile : écrit la liste dans un fichier de la manière suivante par ligne : valeur usine periode
+   Entrée : fichier le fichier ou l'on veut écrire
+            liste la liste que l'on souhaite écrire
+   Sortie : */
+{
+  cellule_t * cour = liste;
+  while (cour != NULL)
+    {
+      fprintf(fichier, "%d %d %d\n", cour->val, cour->usine, cour->periode);
+      cour = cour->suiv;
+    }  
+}  
+
