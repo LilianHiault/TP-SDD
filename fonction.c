@@ -15,7 +15,6 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
   cellule_t * liste = NULL;
   int i = 0; // usines
   int j = 0; // périodes
-  int val = 0; // Valeur à insérer dans la liste
   int compt = 0;
   cellule_t ** prec = NULL;
   // On rempli d'abord la liste de K valeurs
@@ -50,8 +49,8 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
       for(j=j; j<n; j++)
 	{
 	  // Si la valeur est plus petite que la valeur du 1er maillon (plus grande valeur de la liste)
-	  val = valeur(liste);
-	  if(C[i][j] < val)
+	  printf("valeur=%d | tete=%d\n", C[i][j], valeur(liste));
+	  if(C[i][j] <= valeur(liste))
 	    {
 	      // Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
 	      supprCellule(&liste);
@@ -59,7 +58,7 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	      if(c)
 		{
 		  prec = rechercheTri(&liste, valeur(c));
-		  adjCellule(&liste, c);
+		  adjCellule(prec, c);
 		}
 	    }
 	}
