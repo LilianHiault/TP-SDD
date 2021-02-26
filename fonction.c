@@ -29,8 +29,7 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	    {
 	      if(liste != NULL)
 		{
-		  val = valeur(liste);
-		  prec = rechercheTri(&liste, val);
+		  prec = rechercheTri(&liste, valeur(c));
 		  adjCellule(prec, c);
 		}
 	      else
@@ -59,7 +58,7 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	      cellule_t * c = nouvCellule(C[i][j], i, j);
 	      if(c)
 		{
-		  prec = rechercheTri(&liste, valeur(liste));
+		  prec = rechercheTri(&liste, valeur(c));
 		  adjCellule(&liste, c);
 		}
 	    }

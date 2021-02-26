@@ -10,7 +10,7 @@ void afficherListe(cellule_t * adr)
   cellule_t * cour = adr;
   while(cour != NULL)
     {
-      printf("%d, %d produit %d\n", cour->usine, cour->periode, cour->val);
+      printf("L'usine %d à la période %d produit %d\n", cour->usine, cour->periode, cour->val);
       cour = cour->suiv;
     }
 }
@@ -23,7 +23,7 @@ cellule_t ** rechercheTri(cellule_t ** a0, int v)
 {
   cellule_t ** prec = a0;
   cellule_t * cour = *a0;
-  while(cour != NULL && cour->val < v)
+  while(cour != NULL && cour->val > v)
     {
       prec = &(cour->suiv);
       cour = cour->suiv;
