@@ -59,8 +59,16 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 	      cellule_t * c = nouvCellule(C[i][j], i, j);
 	      if(c)
 		{
-		  prec = rechercheTri(&liste, valeur(liste));
-		  adjCellule(&liste, c);
+		  if(liste != NULL)
+		    {
+		      val = valeur(liste);
+		      prec = rechercheTri(&liste, val);
+		      adjCellule(prec, c);
+		    }
+		  else
+		    {
+		      adjCellule(&liste, c);
+		    }
 		}
 	    }
 	}
