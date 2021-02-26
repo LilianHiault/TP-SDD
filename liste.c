@@ -60,13 +60,13 @@ void adjCellule(cellule_t ** prec, cellule_t * nouv)
   *prec = nouv;
 }
       
-void supprCellule(cellule_t * prec)
+void supprCellule(cellule_t ** prec)
 /* supprCellule : supprime une cellule dans une liste
    Entrée : prec la cellule précédante de celle a supprimer
    Sortie : */
 {
-  cellule_t * sauv = prec->suiv;
-  prec = prec;
+  cellule_t * sauv = *prec;
+  *prec = sauv->suiv;
   free(sauv);
 }  
 
