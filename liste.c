@@ -66,7 +66,7 @@ void supprCellule(cellule_t * prec)
    Sortie : */
 {
   cellule_t * sauv = prec->suiv;
-  prec = prec->suiv;
+  prec = prec;
   free(sauv);
 }  
 
