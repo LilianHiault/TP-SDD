@@ -11,11 +11,20 @@ int main(int argc, char * argv[])
   /* argv[1] : fichier à ouvrir */
   /* argv[2] : fichier où écrire */
   /* argv[3] : k nombre d'éléments à chercher */
+  /* argv[4+] : usine à supprimer */
+  
   int n, m;
   int ** mat = NULL;
   char * nomOuv = argv[1];
   char * nomEcr = argv[2];
   int k = atoi(argv[3]);
+  int i = 0;
+
+  /* for(i=0; i<argc; i++) */
+  /*   { */
+  /*     printf("%s\n", argv[i]); */
+  /*   } */
+  
   if(argc > 3)
     {
       FILE * fichierOuv = fopen(nomOuv, "r");
@@ -29,8 +38,11 @@ int main(int argc, char * argv[])
 	  /* afficherListe(liste); */
 	  
 	  libereMatrice(mat, m);
-	  /* suppUsine(&liste, 2); */
-	  /* suppUsine(&liste, 2); */
+	  
+	  for(i=4; i<argc; i++)
+	    {
+	      suppUsine(&liste, atoi(argv[i]));
+	    }
 	  /* printf("Liste :\n"); */
 	  /* afficherListe(liste); */
 
