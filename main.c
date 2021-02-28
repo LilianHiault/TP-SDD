@@ -22,15 +22,15 @@ int main(int argc, char * argv[])
       if (fichierOuv)
 	{
 	  mat = initMatrice(fichierOuv, &m, &n);
-	  printf("Matrice : \n");
-	  afficherMatrice(mat, m, n);
+	  /* printf("Matrice : \n"); */
+	  /* afficherMatrice(mat, m, n); */
 	  cellule_t * liste = coutFaibles(k, mat, m, n);
 	  /* printf("Liste :\n"); */
 	  /* afficherListe(liste); */
 	  
 	  libereMatrice(mat, m);
-	  suppUsine(&liste, 2);
-	  suppUsine(&liste, 2);
+	  /* suppUsine(&liste, 2); */
+	  /* suppUsine(&liste, 2); */
 	  /* printf("Liste :\n"); */
 	  /* afficherListe(liste); */
 
@@ -40,6 +40,7 @@ int main(int argc, char * argv[])
 	    if (fichierEcr)
 	      {
 		listToFile(fichierEcr, liste);
+		printf("Le fichier %s contient la liste des %d plus faibles coûts\n", nomEcr, k);
 		libereListe(liste);
 	      }
 	    else
