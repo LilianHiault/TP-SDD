@@ -20,7 +20,7 @@ pile_t * creerPile(int nbElm) {
   return pile;
 }  
 
-void libererPile(pile_t pile) {
+void libererPile(pile_t * pile) {
   /* libererPile : libère une pile
      Entrée : pile la pile a libérer
      Sortie : */
@@ -28,33 +28,33 @@ void libererPile(pile_t pile) {
   free(pile);
 }
 
-int estVide(pile_t pile) {
+int estVide(pile_t * pile) {
   /* estVide : teste si la pile est vide
      Entrée : pile la pile que l'on souhaite tester
      Sortie : 1 si la pile est vide, 0 sinon */
-  return pile->adr == -1;
+  return (pile->adr == -1);
 }
 
-int estPleine(pile_t pile) {
+int estPleine(pile_t * pile) {
   /* estPleine : teste si la pile est pleine
      Entrée : pile la pile que l'on souhaite tester
      Sortie : pleine vaut 1 si la pile est pleine, 0 sinon */
-  return pile->adr == pile->nbElm - 2;
+  return (pile->adr == pile->nbElm - 2);
 }
 
-element_t tete(pile_t pile) {
+element_t tete(pile_t * pile) {
   /* tete : retour la valeur de la tete de la pile
      Entrée : pile la pile ou l'on souhaite connaitre la valeur de la tete
      Sortie : la valeur de la tete */
   return pile->val[pile->adr];
 }
 
-void empiler(pile_t pile, element_t elm) {
+void empiler(pile_t * pile, element_t elm) {
   /* empiler : permet d'empiler un element dans une pile
      Entrée : la pile ou empiler
               elm l'élément à empiler
      Sortie : */
-  if (estPleine) {
+  if (estPleine(pile)) {
     printf("erreur : la pile est pleine\n");
   }
   else {
@@ -63,15 +63,16 @@ void empiler(pile_t pile, element_t elm) {
   }  
 }
 
-element_t depiler(pile_t pile) {
+element_t depiler(pile_t * pile) {
   /* depiler : permet de dépiler un element dans une pile
      Entrée : la pile ou l'on veut dépiler
      Sortie : elm l'élément que l'on a dépilé */
-  if (estVide) {
+  element_t elm = 0;
+  if (estVide(pile)) {
     printf("erreur : la pile est vide\n");
   }
   else {
-    element_t elm = tete(pile);
+    elm = tete(pile);
     (pile->adr)--;
   }
   return elm;

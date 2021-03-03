@@ -7,7 +7,7 @@ typedef int element_t;
 typedef struct pile {
   int nbElm;
   int adr;
-  element_t val[];
+  element_t * val;
 } pile_t;  
 
 pile_t * creerPile(int nbElm);
@@ -20,28 +20,28 @@ pile_t * creerPile(int nbElm);
      Entrée : nbElm le nombre d'éléments max dans la pile
      Sortie : pile la pile */
 
-int estVide(pile_t pile);
+int estVide(pile_t * pile);
   /* estVide : teste si la pile est vide
      Entrée : pile la pile que l'on souhaite tester
      Sortie : 1 si la pile est vide, 0 sinon */
 
-int estPleine(pile_t pile);
+int estPleine(pile_t * pile);
   /* estPleine : teste si la pile est pleine
      Entrée : pile la pile que l'on souhaite tester
      Sortie : 1 si la pile est pleine, 0 sinon */
 
-element_t tete(pile_t pile);
+element_t tete(pile_t * pile);
   /* tete : retour la valeur de la tete de la pile
      Entrée : pile la pile ou l'on souhaite connaitre la valeur de la tete
      Sortie : la valeur de la tete */
 
-void empiler(pile_t pile, element_t elm);
+void empiler(pile_t * pile, element_t elm);
   /* empiler : permet d'empiler un element dans une pile
      Entrée : la pile ou empiler
               elm l'élément à empiler
      Sortie : */
 
-element_t depiler(pile_t pile);
+element_t depiler(pile_t * pile);
   /* depiler : permet de dépiler un element dans une pile
      Entrée : la pile ou l'on veut dépiler
      Sortie : elm l'élément que l'on a dépilé*/
