@@ -13,6 +13,7 @@ pile_t * creerPile(int nbElm) {
     pile->adr = -1;
     pile->val = malloc(nbElm * sizeof(element_t));
     if (pile->val == NULL) {
+      free(pile);
       pile = NULL;
     }  
   }
