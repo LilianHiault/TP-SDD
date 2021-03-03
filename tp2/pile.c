@@ -10,8 +10,11 @@ pile_t * creerPile(int nbElm) {
   pile_t * pile = malloc(sizeof(pile_t));
   if (pile != NULL) {
     pile->nbElm = nbElm;
-    pile->adr = 0;
+    pile->adr = -1;
     pile->val = malloc(nbElm * sizeof(element_t));
+    if (pile->val == NULL) {
+      pile = NULL;
+    }  
   }
   return pile;
 }  
@@ -27,23 +30,15 @@ void libererPile(pile_t pile) {
 int estVide(pile_t pile) {
   /* estVide : teste si la pile est vide
      Entrée : pile la pile que l'on souhaite tester
-     Sortie : vide vaut 1 si la pile est vide, 0 sinon */
-  int vide = 1;
-  if (pile->adr != 0) {
-    vide = 0;
-  }
-  return vide;
+     Sortie : 1 si la pile est vide, 0 sinon */
+  return pile->adr == -1;
 }
 
 int estPleine(pile_t pile) {
   /* estPleine : teste si la pile est pleine
      Entrée : pile la pile que l'on souhaite tester
      Sortie : pleine vaut 1 si la pile est pleine, 0 sinon */
-  int pleine = 1;
-  if (pile->adr != pile->nbElm - 1) {
-    pleine = 0;
-  }
-  return pleine;
+  return pile->adr == pile->nbElm - 2;
 }
 
 element_t tete(pile_t pile) {
@@ -67,14 +62,16 @@ void empiler(pile_t pile, element_t elm) {
   }  
 }
 
-void depiler(pile_t pile) {
+element_t depiler(pile_t pile) {
   /* depiler : permet de dépiler un element dans une pile
      Entrée : la pile ou l'on veut dépiler
-     Sortie : */
+     Sortie : elm l'élément que l'on a dépilé */
   if (estVide) {
     printf("erreur : la pile est vide\n");
   }
   else {
+    element_t elm = tete(pile);
     (pile->adr)--;
   }
+  return elm;
 }  

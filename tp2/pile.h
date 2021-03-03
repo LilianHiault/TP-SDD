@@ -23,12 +23,12 @@ pile_t * creerPile(int nbElm);
 int estVide(pile_t pile);
   /* estVide : teste si la pile est vide
      Entrée : pile la pile que l'on souhaite tester
-     Sortie : vide vaut 1 si la pile est vide, 0 sinon */
+     Sortie : 1 si la pile est vide, 0 sinon */
 
 int estPleine(pile_t pile);
   /* estPleine : teste si la pile est pleine
      Entrée : pile la pile que l'on souhaite tester
-     Sortie : pleine vaut 1 si la pile est pleine, 0 sinon */
+     Sortie : 1 si la pile est pleine, 0 sinon */
 
 element_t tete(pile_t pile);
   /* tete : retour la valeur de la tete de la pile
@@ -41,9 +41,9 @@ void empiler(pile_t pile, element_t elm);
               elm l'élément à empiler
      Sortie : */
 
-void depiler(pile_t pile);
+element_t depiler(pile_t pile);
   /* depiler : permet de dépiler un element dans une pile
      Entrée : la pile ou l'on veut dépiler
-     Sortie : */
+     Sortie : elm l'élément que l'on a dépilé*/
 
 #endif
