@@ -31,14 +31,16 @@ file_t * initFile(int n)
   return f;
 }
 
-void enfiler(file_t f, element_t elem)
+int enfiler(file_t f, element_t elem)
 /* enfiler : ajoute un élément dans la file
    Entrée : file_t f la file
             element_t elem l'élément à ajouter
-   Sortie : */
+   Sortie : int vaut 0 si aucune erreur */
 {
+  erreur = 0;
   if (filePleine(f))
     {
+      erreur = 1;
       fprintf(stderr, "La file est pleine\n");
     }
   else
@@ -47,16 +49,20 @@ void enfiler(file_t f, element_t elem)
       f.val[f.fin] = elem;
       f.nb_elem = f.nb_elem + 1;
     }
+  return erreur;
 }
 
-element_t defiler(file_t f)
+element_t defiler(file_t f, int * erreur)
 /* defiler : supprime l'élément en tête de la file et le supprime
    Entrée : file_t f la file
-   Sortie : element_t l'élément en tête de file*/
+            int * erreur pointeur vers un entier qui vaut 0 si pas d'erreur
+   Sortie : element_t l'élément en tête de file
+            int * erreur pointeur vers un entier qui vaut 0 si pas d'erreur*/
 {
   int elem = 0;
   if(fileVide(f))
     {
+      *erreur = 1;
       fprintf(stderr, "La file est déjà vide\n");
     }
   else
@@ -64,6 +70,7 @@ element_t defiler(file_t f)
       elem = f.val[(f.deb)];
       f.deb = (f.deb + 1) % f.taille;
       f.nb_elem = f.nb_elem - 1;
+      *erreur = 0;
     }
   return elem;
 }
