@@ -48,18 +48,16 @@ int main(int argc, char * argv[])
 
 	  /* printf("Fichier :\n"); */
 	  FILE * fichierEcr = fopen(nomEcr, "w");
-	  {
-	    if (fichierEcr)
-	      {
-		listToFile(fichierEcr, liste);
-		printf("Le fichier %s contient la liste des %d plus faibles coûts\n", nomEcr, k);
-		libereListe(liste);
-	      }
-	    else
-	      {
-		fprintf(stderr, "Erreur d'ouverture du fichier d'écriture\n");
-	      }
-	  }
+	  if (fichierEcr)
+	    {
+	      listToFile(fichierEcr, liste);
+	      printf("Le fichier %s contient la liste des %d plus faibles coûts\n", nomEcr, k);
+	      libereListe(liste);
+	    }
+	  else
+	    {
+	      fprintf(stderr, "Erreur d'ouverture du fichier d'écriture\n");
+	    }
 	}
       else
 	{
