@@ -22,76 +22,79 @@ cellule_t * coutFaibles(int k, int ** C, int m, int n)
 
   // On rempli d'abord la liste de K valeurs
   // La liste est triée dans l'ordre décroissant, on a donc la plus grande valeur dans le 1er maillon
-  while(i < m && compt < k)
-    {
-      while(j < n && compt < k)
-	{
-	  cellule_t * c = nouvCellule(C[i][j], i, j);
-	  if(c)
-	    {
-	      if(liste != NULL)
-		{
-		  prec = rechercheTri(&liste, valeur(c));
-		  adjCellule(prec, c);
-		}
-	      else
-		{
-		  adjCellule(&liste, c);
-		}
-	    }
-	  j++;
-	  compt++;
-	  jsauv = j;
-	}
-      j = 0;
-      i++;
-    }
+  if (k!=0) {
+    while(i < m && compt < k)
+      {
+	while(j < n && compt < k)
+	  {
+	    cellule_t * c = nouvCellule(C[i][j], i, j);
+	    if(c)
+	      {
+		if(liste != NULL)
+		  {
+		    prec = rechercheTri(&liste, valeur(c));
+		    adjCellule(prec, c);
+		  }
+		else
+		  {
+		    adjCellule(&liste, c);
+		  }
+	      }
+	    j++;
+	    compt++;
+	    jsauv = j;
+	  }
+	j = 0;
+	i++;
+      }
 
-  //printf("Liste %d premiers :\n", k);
-  //afficherListe(liste);
+    //printf("Liste %d premiers :\n", k);
+    //afficherListe(liste);
 
-  isauv = i-1;
+    isauv = i-1;
 
-  // On finit de lire la ligne de la matrice
-  for(j=jsauv; j<n; j++)
-    {
-      //printf("Ligne : i:%d, j:%d, valeur=%d | tete=%d\n", isauv, j, C[isauv][j], valeur(liste));
-      if(C[isauv][j] <= valeur(liste))
-	{
-	  // Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
-	  supprCellule(&liste);
-	  cellule_t * c = nouvCellule(C[isauv][j], isauv, j);
-	  if(c)
-	    {
-	      prec = rechercheTri(&liste, valeur(c));
-	      adjCellule(prec, c);
-	    }
-	}
-    }
+    // On finit de lire la ligne de la matrice
+    for(j=jsauv; j<n; j++)
+      {
+	//printf("Ligne : i:%d, j:%d, valeur=%d | tete=%d\n", isauv, j, C[isauv][j], valeur(liste));
+	if(C[isauv][j] <= valeur(liste))
+	  {
+	    // Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
+	    supprCellule(&liste);
+	    cellule_t * c = nouvCellule(C[isauv][j], isauv, j);
+	    if(c)
+	      {
+		prec = rechercheTri(&liste, valeur(c));
+		adjCellule(prec, c);
+	      }
+	  }
+      }
+    
 
-  //printf("Liste fin ligne :\n");
-  //afficherListe(liste);
+    //printf("Liste fin ligne :\n");
+    //afficherListe(liste);
  
-  // On parcours chaque case de la matrice
-  for(i=isauv+1; i<m; i++)
-    {
-      for(j=0; j<n; j++)
-	{
-	  // Si la valeur est plus petite que la valeur du 1er maillon (plus grande valeur de la liste)
-	  //printf("i:%d, j:%d, valeur=%d | tete=%d\n", i, j, C[i][j], valeur(liste));
-	  if(C[i][j] <= valeur(liste))
-	    {
-	      // Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
-	      supprCellule(&liste);
-	      cellule_t * c = nouvCellule(C[i][j], i, j);
-	      if(c)
-		{
-		  prec = rechercheTri(&liste, valeur(c));
-		  adjCellule(prec, c);
-		}
-	    }
-	}
-    }
+    // On parcours chaque case de la matrice
+    for(i=isauv+1; i<m; i++)
+      {
+	for(j=0; j<n; j++)
+	  {
+	    // Si la valeur est plus petite que la valeur du 1er maillon (plus grande valeur de la liste)
+	    //printf("i:%d, j:%d, valeur=%d | tete=%d\n", i, j, C[i][j], valeur(liste));
+	    if(C[i][j] <= valeur(liste))
+	      {
+		// Alors on supprime le 1er maillon et on insére dans la liste triée la nouvelle valeur
+		supprCellule(&liste);
+		cellule_t * c = nouvCellule(C[i][j], i, j);
+		if(c)
+		  {
+		    prec = rechercheTri(&liste, valeur(c));
+		    adjCellule(prec, c);
+		  }
+	      }
+	  }
+      }
+  }
   return liste;
 }
 
