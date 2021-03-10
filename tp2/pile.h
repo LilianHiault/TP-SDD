@@ -15,11 +15,6 @@ pile_t * creerPile(int nbElm);
      Entrée : nbElm le nombre d'éléments max dans la pile
      Sortie : pile la pile */
 
-pile_t * creerPile(int nbElm);
-  /* creerPile : créer et initialise une pile
-     Entrée : nbElm le nombre d'éléments max dans la pile
-     Sortie : pile la pile */
-
 int estVide(pile_t * pile);
   /* estVide : teste si la pile est vide
      Entrée : pile la pile que l'on souhaite tester

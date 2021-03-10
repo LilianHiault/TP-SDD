@@ -1,9 +1,14 @@
 #include "fonction.h"
+#include "pile.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX 100
 
-int CNP(int n, int p) {
+
+int CNP(int n, int p)
+{
   if (n == p || p == 0) {
     return 1;
   }
@@ -11,6 +16,33 @@ int CNP(int n, int p) {
     return CNP(n-1, p) + CNP(n-1, p-1);
   }
 }  
+
+int CNP_iter(int n, int p)
+{
+  int ni = n;
+  int pi = p;
+  int r = 0;
+  pile_t * pile = creerPile(MAX);
+
+  do
+    {
+      if (ni != pi || pi != 0)
+	{
+	  couple_t c = {ni, pi};
+	  empiler(c);
+	  ni = ni - 1;
+	  pi = pi - 1;
+	}
+      else
+	{
+	  r = r + 1;
+	}
+    } while (!estVide(pile));
+  return r;
+}
+	  
+      
+  
 
   /*
   CNP(5, 3)
