@@ -1,6 +1,9 @@
-#include "fonction.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "fonction.h"
+#include "pile.h"
+
+#define TAILLE 100
 
 
 int CNP(int n, int p) {
@@ -21,3 +24,30 @@ int CNP(int n, int p) {
   <=> 4 + 1 + 1 + 1 + 1 + 1 + 1
   <=> 8
   */
+
+int CNP_iter(int n, int p) {
+  int ni = n;
+  int pi = p;
+  int r = 0;
+  int continuer = 1;
+  pile_t * pile = creerPile(TAILLE);
+  do {
+    if (ni != pi && pi != 0) {
+      empiler(pile, ni-1);
+      empiler(pile, pi);
+      ni = ni - 1;
+      pi = pi - 1;
+    }
+    else {
+      r = r + 1;
+      if (estVide(pile)) {
+	continuer = 0;
+      }
+      else {
+	pi = depiler(pile);
+	ni = depiler(pile);
+      }
+    }
+  } while(continuer);
+  return r;
+}  

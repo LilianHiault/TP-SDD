@@ -22,7 +22,7 @@ file.o: file.h file.c
 pile.o: pile.h pile.c
 	$(CC) -c pile.c $(CFLAGS)
 
-fonction.o: fonction.h fonction.c
+fonction.o: fonction.h fonction.c pile.c pile.h
 	$(CC) -c fonction.c $(CFLAGS)
 
 clean:
