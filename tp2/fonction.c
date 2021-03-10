@@ -5,8 +5,11 @@
 
 #define TAILLE 100
 
+#define MAX 100
 
-int CNP(int n, int p) {
+
+int CNP(int n, int p)
+{
   if (n == p || p == 0) {
     return 1;
   }
