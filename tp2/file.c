@@ -37,7 +37,7 @@ int enfiler(file_t f, element_t elem)
             element_t elem l'élément à ajouter
    Sortie : int vaut 0 si aucune erreur */
 {
-  erreur = 0;
+  int erreur = 0;
   if (filePleine(f))
     {
       erreur = 1;

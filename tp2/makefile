@@ -7,13 +7,13 @@ CFLAGS = -Wall -Wextra -g
 # LDFLAGS = -lm
 
 # liste des fichiers objets
-SRC = main.c file.c pile.c
+SRC = main.c file.c pile.c fonction.c
 OBJETS = $(SRC:%.c=%.o)
 
 prog : $(OBJETS)
 	$(CC) $(OBJETS) $(LDFLAGS) -o prog
 
-main.o: main.c file.h file.c
+main.o: main.c file.h file.c pile.h pile.c fonction.h fonction.c
 	$(CC) -c main.c $(CFLAGS)
 
 file.o: file.h file.c
